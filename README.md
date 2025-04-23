@@ -4,15 +4,15 @@ Transform your favorite landscapes into music! This hobby project combines geogr
 
 ## What is This?
 
-The Emotional Landscape Composer is a fun Python tool that turns geographical terrain data into musical compositions. Feed it a mountain, get a majestic symphony. Give it a valley, hear a serene melody. Each landscape feature creates different emotions that are translated into music!
+The Emotional Landscape Composer is a fun Python tool that turns geographical terrain data into musical compositions. Each landscape feature creates different emotions that are translated into music! Try it using valleys, mountains or anything else you'd like! 
 
 ## Features
 
-- 🏔️ **Any Terrain**: Use elevation data from your favorite places
-- 🧠 **AI-Powered**: Neural networks help translate landscape to emotions
+- 🏔️ **Any Terrain**: Use elevation data from your favorite locations
+- 🧠 **AI-Powered**: Neural networks translate landscape to emotions
 - 🎹 **Custom Music**: Generates unique MIDI compositions
-- 🎨 **Visualization**: See the relationship between terrain and music
-- 🔊 **Play It**: Listen to your landscape directly in the app
+- 🎨 **Visualization**: View the relationship between terrain and music
+- 🔊 **Play It**: Listen to your landscape directly from CLI
 
 ## Quick Start
 
@@ -90,12 +90,8 @@ pip install -r requirements.txt
 
 ## Contributing
 
-This is a hobby project, so feel free to play around, modify, and improve it! Some ideas:
+This is a hobby project, so feel free to play around, modify, and improve it! Here are some other ideas I had:
 - Add new emotion mappings
 - Create better visualization tools
 - Improve the music generation algorithms
 - Add support for more geographic data formats
-
-## License
-
-This project is under the MIT License - do whatever you want with it and have fun!
