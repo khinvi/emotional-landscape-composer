@@ -90,12 +90,8 @@ pip install -r requirements.txt
 
 ## Contributing
 
-This is a hobby project, so feel free to play around, modify, and improve it! Some ideas:
+This is a hobby project, so feel free to play around, modify, and improve it! Here are some other ideas I had:
 - Add new emotion mappings
 - Create better visualization tools
 - Improve the music generation algorithms
 - Add support for more geographic data formats
-
-## License
-
-This project is under the MIT License - do whatever you want with it and have fun!
