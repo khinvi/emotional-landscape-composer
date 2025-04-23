@@ -130,6 +130,12 @@ def main():
         help="Musical key for the composition (default: C_major)"
     )
     parser.add_argument(
+        "--model", "-m",
+        default="base",
+        choices=["base", "transformer_xl", "bert"],
+        help="Type of emotion model to use (default: base)"
+    )
+    parser.add_argument(
         "--landscape", "-l",
         default="mountain",
         choices=["mountain", "valley", "hills", "canyon", "archipelago", "random"],
@@ -166,7 +172,8 @@ def main():
     print("\n🎵 Creating the landscape composer...")
     composer = LandscapeComposer(
         data_source=terrain_data,
-        key=args.key
+        key=args.key,
+        emotion_model=args.model
     )
     
     # Analyze terrain

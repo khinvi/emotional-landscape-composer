@@ -274,13 +274,21 @@ class LandscapeComposer:
             
             # Add notes
             for note in track['notes']:
+                # Ensure pitch is within valid MIDI range (0-127)
+                pitch = max(0, min(127, note['pitch']))
+                
+                # Ensure other values are valid
+                velocity = max(0, min(127, note['velocity']))
+                time = max(0, note['time'])
+                duration = max(0.1, note['duration'])  # Avoid zero duration
+                
                 midi.addNote(
                     track=i,
                     channel=0,
-                    pitch=note['pitch'],
-                    time=note['time'],
-                    duration=note['duration'],
-                    volume=note['velocity']
+                    pitch=pitch,
+                    time=time,
+                    duration=duration,
+                    volume=velocity
                 )
                 
         return midi

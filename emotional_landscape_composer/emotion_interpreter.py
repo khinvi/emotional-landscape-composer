@@ -53,14 +53,31 @@ class EmotionModel:
         """
         Initialize the neural network model.
         """
-        if self.model_name == 'base':
-            self._initialize_base_model()
-        elif self.model_name == 'transformer_xl':
-            self._initialize_transformer_model()
-        elif self.model_name == 'bert':
-            self._initialize_bert_model()
-        else:
-            raise ValueError(f"Unknown model type: {self.model_name}")
+        try:
+            if self.model_name == 'base':
+                self._initialize_base_model()
+            elif self.model_name == 'transformer_xl':
+                try:
+                    self._initialize_transformer_model()
+                except Exception as e:
+                    print(f"Error initializing transformer model: {e}")
+                    print("Falling back to base model...")
+                    self._initialize_base_model()
+            elif self.model_name == 'bert':
+                try:
+                    self._initialize_bert_model()
+                except Exception as e:
+                    print(f"Error initializing BERT model: {e}")
+                    print("Falling back to base model...")
+                    self._initialize_base_model()
+            else:
+                print(f"Unknown model type: {self.model_name}")
+                print("Falling back to base model...")
+                self._initialize_base_model()
+        except Exception as e:
+            print(f"Error during model initialization: {e}")
+            print("Initializing a simple model...")
+            self._initialize_simple_model()
             
     def _initialize_base_model(self) -> None:
         """
@@ -106,9 +123,12 @@ class EmotionModel:
         # Input layer
         inputs = tf.keras.layers.Input(shape=(input_dim,))
         
-        # Reshape to sequence format
+        # Reshape to sequence format - Fixed to handle dimensions correctly
         x = tf.keras.layers.Reshape((1, input_dim))(inputs)
-        x = tf.keras.layers.RepeatVector(sequence_length)(x)
+        # Using Lambda layer instead of RepeatVector to avoid dimension issues
+        x = tf.keras.layers.Lambda(
+            lambda x: tf.tile(x, [1, sequence_length, 1])
+        )(x)
         
         # Add positional encoding
         x = self._positional_encoding(x)
@@ -179,6 +199,7 @@ class EmotionModel:
             print(f"Error initializing BERT model: {e}")
             print("Falling back to base model...")
             self._initialize_base_model()
+ 
     
     def _positional_encoding(self, x: tf.Tensor) -> tf.Tensor:
         """

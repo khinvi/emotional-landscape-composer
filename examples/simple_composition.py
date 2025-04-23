@@ -67,9 +67,9 @@ def main():
     # Create a composer with the synthetic terrain
     composer = LandscapeComposer(
         data_source=terrain_data,
-        emotion_model='transformer_xl',  # The fancy version
-        tempo_range=(70, 110),          # Not too slow, not too fast
-        key='C_lydian'                  # A dreamy, magical-sounding key
+        emotion_model='base',         # Using the simpler model for better compatibility
+        tempo_range=(70, 110),        # Not too slow, not too fast
+        key='C_lydian'                # A dreamy, magical-sounding key
     )
     
     # Analyze terrain and visualize features

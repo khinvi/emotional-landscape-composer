@@ -159,7 +159,7 @@ class MusicGenerator:
         emotion_means = {name: float(np.mean(values)) for name, values in emotions.items()}
         total = sum(emotion_means.values())
         if total > 0:
-            emotion_means = {name: value / total for name, values in emotion_means.items()}
+            emotion_means = {name: strength / total for name, strength in emotion_means.items()}
         
         # Sort emotions by strength
         dominant_emotions = sorted(
@@ -514,8 +514,25 @@ class MusicGenerator:
             bass_note_idx = random.choice(bass_note_options)
             
             # Get the actual MIDI note
-            base_pitch = scale_notes[0]  # Root note
-            pitch = (base_pitch % 12) + bass_note_idx + (12 * random.randint(register[0], register[1]))
+            # Make sure we have a valid note in the scale before calculating
+            if len(scale_notes) == 0:
+                # Emergency fallback - use middle C
+                pitch = 36  # C2 (low C)
+            else:
+                # Ensure we use an existing note from the scale
+                base_idx = 0
+                while base_idx < len(scale_notes) and scale_notes[base_idx] < 60:
+                    base_idx += 1
+                if base_idx > 0:
+                    base_idx -= 1  # Go back to a lower note
+                
+                base_pitch = scale_notes[base_idx % len(scale_notes)]
+                
+                # Calculate pitch based on root note and selected register
+                pitch = (base_pitch % 12) + bass_note_idx + (12 * random.randint(register[0], register[1]))
+                
+                # Ensure pitch is within MIDI range (0-127)
+                pitch = max(0, min(127, pitch))
             
             # Determine note duration (usually longer for bass)
             duration = random.uniform(1.0, 4.0)
@@ -839,11 +856,15 @@ class MusicGenerator:
         min_note = 60 + (register[0] * 12)  # 60 is middle C
         max_note = 60 + (register[1] * 12) + 11
         
+        # Ensure min and max are within valid MIDI note range (0-127)
+        min_note = max(0, min(127, min_note))
+        max_note = max(0, min(127, max_note))
+        
         valid_notes = [note for note in scale if min_note <= note <= max_note]
         
         if not valid_notes:
             # Fallback if no notes in register
-            return scale[len(scale) // 2]
+            return 60  # Default to middle C
         
         return random.choice(valid_notes)
     
