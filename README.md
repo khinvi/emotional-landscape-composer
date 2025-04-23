@@ -2,8 +2,6 @@
 
 Transform your favorite landscapes into music! This hobby project combines geography, emotion, and music in a fun and creative way.
 
-![Landscape to Music](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNnUwY2M3NHI5Zm01MmJoa202MXFweW5yaHVsNHcwY2NramF1amZlbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/hvbBSBaR5k5zTKEcLR/giphy.gif)
-
 ## What is This?
 
 The Emotional Landscape Composer is a fun Python tool that turns geographical terrain data into musical compositions. Feed it a mountain, get a majestic symphony. Give it a valley, hear a serene melody. Each landscape feature creates different emotions that are translated into music!
