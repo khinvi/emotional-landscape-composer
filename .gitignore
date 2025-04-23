@@ -1,0 +1,72 @@
+# 🏔️ Emotional Landscape Composer .gitignore 🎵
+
+# Python stuff
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env/
+.venv/
+
+# IDE/editor stuff
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+# OS stuff
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Project-specific stuff
+# Generated files
+*.mid
+*.midi
+*.wav
+*.mp3
+*_terrain.png
+synthetic_terrain.png
+my_mountains.png
+
+# Large data files
+*.tif
+*.tiff
+*.shp
+*.dbf
+*.shx
+*.prj
+*.qpj
+*.gpkg
+*.geojson
+
+# But keep sample data
+!samples/*.tif
+
+# Jupyter notebooks (optional)
+.ipynb_checkpoints
+*.ipynb

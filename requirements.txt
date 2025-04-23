@@ -1,0 +1,21 @@
+# Core packages
+tensorflow>=2.9.0
+geopandas>=0.12.0
+numpy>=1.20.0
+matplotlib>=3.5.0
+
+# Geographic data handling
+rasterio>=1.2.0
+shapely>=1.8.0
+
+# AI/ML
+transformers>=4.18.0
+
+# Music generation and playback
+midiutil>=1.2.1
+pygame>=2.1.0
+
+# Other utilities
+pyproj>=3.3.0
+scipy>=1.7.0
+pydub>=0.25.1  # Optional: for WAV/MP3 export
